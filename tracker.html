@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Sweep Tracker - MySweepstakesHub.com</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Verdana, Arial, sans-serif; font-size: 12px; background: #fff; color: #000; }
+a { color: #00c; } a:visited { color: #609; } a:hover { color: #c00; text-decoration: underline; }
+#header { background: #003580; padding: 8px 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+#logo { color: #ffff00; font-size: 20px; font-weight: bold; font-family: Arial Black, Arial, sans-serif; text-decoration: none; }
+#logo span { color: #cceeff; }
+#tagline { color: #aaccff; font-size: 11px; flex: 1; padding-left: 14px; }
+#search-box { display: flex; gap: 4px; }
+#search-box input[type=text] { padding: 3px 5px; font-size: 11px; border: 1px solid #ccc; width: 160px; font-family: Verdana, Arial, sans-serif; }
+#search-box input[type=submit] { padding: 3px 8px; font-size: 11px; background: #ff9900; border: 1px solid #cc6600; color: #000; font-weight: bold; cursor: pointer; font-family: Verdana, Arial, sans-serif; }
+#nav { background: #cc0000; padding: 4px 10px; display: flex; flex-wrap: wrap; gap: 2px; }
+#nav a { color: #fff; font-size: 11px; font-weight: bold; padding: 3px 8px; text-decoration: none; border-right: 1px solid rgba(255,255,255,0.3); }
+#nav a:hover, #nav a.active { background: #ff9900; color: #000; text-decoration: none; }
+#nav a.hi { color: #ffff99; }
+#wrap { max-width: 860px; margin: 0 auto; padding: 8px 10px; }
+
+/* TRACKER STYLES */
+.tracker-head { background: #003580; color: #fff; padding: 6px 10px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.tracker-head h1 { font-size: 14px; font-weight: bold; }
+.tracker-head .sub { font-size: 11px; color: #aaccff; }
+.stats-bar { display: flex; gap: 0; border: 1px solid #99aacc; margin-bottom: 8px; background: #f0f4ff; }
+.stat-box { flex: 1; text-align: center; padding: 6px 4px; border-right: 1px solid #99aacc; }
+.stat-box:last-child { border-right: none; }
+.stat-box .n { font-size: 20px; font-weight: bold; color: #003580; display: block; line-height: 1; }
+.stat-box .l { font-size: 10px; color: #555; }
+.stat-box.red .n { color: #cc0000; }
+.stat-box.green .n { color: #009900; }
+.stat-box.purple .n { color: #660099; }
+
+/* ADD FORM */
+.add-box { border: 1px solid #99aacc; margin-bottom: 10px; }
+.add-box-head { background: #cc0000; color: #fff; font-size: 11px; font-weight: bold; padding: 3px 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+.add-box-head a { color: #ffcc99; font-size: 10px; font-weight: normal; }
+.add-form { padding: 8px 10px; background: #fffdf5; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; }
+.add-form .full { grid-column: 1 / -1; }
+.field label { display: block; font-size: 10px; font-weight: bold; color: #333; margin-bottom: 2px; text-transform: uppercase; }
+.field input, .field select, .field textarea { width: 100%; padding: 3px 5px; font-size: 11px; border: 1px solid #aaa; font-family: Verdana, Arial, sans-serif; }
+.field textarea { height: 40px; resize: vertical; }
+.add-form-btns { grid-column: 1 / -1; display: flex; gap: 6px; }
+.btn-add { background: #003580; border: 1px solid #001a4d; color: #fff; font-size: 11px; font-weight: bold; padding: 4px 14px; cursor: pointer; font-family: Verdana, Arial, sans-serif; }
+.btn-add:hover { background: #0044aa; }
+.btn-clear { background: #eee; border: 1px solid #aaa; color: #333; font-size: 11px; padding: 4px 10px; cursor: pointer; font-family: Verdana, Arial, sans-serif; }
+
+/* FILTER TABS */
+.tab-row { display: flex; gap: 0; border: 1px solid #99aacc; border-bottom: none; margin-top: 8px; }
+.tab-row a { flex: 1; text-align: center; padding: 4px 6px; font-size: 11px; font-weight: bold; background: #eef2ff; border-right: 1px solid #99aacc; text-decoration: none; color: #003580; }
+.tab-row a:last-child { border-right: none; }
+.tab-row a:hover { background: #dde8f5; }
+.tab-row a.on { background: #003580; color: #fff; }
+
+/* TRACKER TABLE */
+.track-table { width: 100%; border-collapse: collapse; border: 1px solid #99aacc; font-size: 11px; }
+.track-table th { background: #dde8f0; padding: 4px 6px; text-align: left; font-size: 10px; text-transform: uppercase; color: #333; border-bottom: 1px solid #aac; font-weight: bold; }
+.track-table td { padding: 4px 6px; border-bottom: 1px solid #eee; vertical-align: middle; }
+.track-table tr:nth-child(even) td { background: #f9f9f9; }
+.track-table tr:hover td { background: #fffde8; }
+.track-table tr.due-today td { background: #fff8e6 !important; }
+.track-table tr.overdue td { background: #fff5f5 !important; }
+.freq-badge { font-size: 9px; font-weight: bold; padding: 1px 4px; border-radius: 1px; white-space: nowrap; }
+.f-daily { background: #0055cc; color: #fff; }
+.f-weekly { background: #006666; color: #fff; }
+.f-single { background: #884400; color: #fff; }
+.f-instant { background: #660099; color: #fff; }
+.status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 3px; }
+.dot-done { background: #009900; }
+.dot-due { background: #ff9900; }
+.dot-overdue { background: #cc0000; }
+.dot-pending { background: #aaa; }
+.action-btns { display: flex; gap: 3px; }
+.btn-entered { background: #009900; border: 1px solid #006600; color: #fff; font-size: 10px; padding: 2px 6px; cursor: pointer; font-family: Verdana, Arial, sans-serif; white-space: nowrap; }
+.btn-entered:hover { background: #00bb00; }
+.btn-entered.done { background: #666; border-color: #444; }
+.btn-skip { background: #eee; border: 1px solid #aaa; color: #555; font-size: 10px; padding: 2px 5px; cursor: pointer; font-family: Verdana, Arial, sans-serif; }
+.btn-del { background: #cc0000; border: 1px solid #880000; color: #fff; font-size: 10px; padding: 2px 5px; cursor: pointer; font-family: Verdana, Arial, sans-serif; }
+.sweeps-name a { color: #00c; font-weight: bold; font-size: 11px; }
+.sweeps-name a:hover { color: #c00; }
+.ends-col { font-size: 10px; color: #555; white-space: nowrap; }
+.ends-col.hot { color: #cc0000; font-weight: bold; }
+.last-entered { font-size: 10px; color: #666; }
+.notes-text { font-size: 10px; color: #666; font-style: italic; }
+.streak { font-size: 10px; color: #009900; font-weight: bold; }
+
+/* DAILY REMINDER BOX */
+.reminder-box { border: 2px solid #ff9900; background: #fffbe6; padding: 8px 10px; margin-bottom: 10px; }
+.reminder-box h3 { font-size: 12px; color: #cc6600; margin-bottom: 5px; }
+.reminder-box p { font-size: 11px; color: #553300; margin-bottom: 6px; }
+.reminder-list { list-style: none; }
+.reminder-list li { padding: 3px 0; border-bottom: 1px dotted #ddd; font-size: 11px; display: flex; align-items: center; gap: 6px; }
+.reminder-list li:last-child { border-bottom: none; }
+.reminder-list .prize { color: #003580; font-weight: bold; }
+.reminder-list .rl-btn { background: #ff9900; border: 1px solid #cc6600; color: #000; font-size: 10px; font-weight: bold; padding: 1px 6px; cursor: pointer; font-family: Verdana, Arial, sans-serif; margin-left: auto; text-decoration: none; white-space: nowrap; }
+
+/* WON/NOTES MODAL-LIKE INLINE */
+.won-box { background: #f0fff0; border: 1px solid #009900; padding: 6px 8px; margin-top: 4px; font-size: 11px; display: none; }
+.won-box input { padding: 2px 5px; font-size: 11px; border: 1px solid #aaa; width: 200px; font-family: Verdana, Arial, sans-serif; margin-right: 4px; }
+.won-box button { background: #009900; border: 1px solid #006600; color: #fff; font-size: 10px; padding: 2px 8px; cursor: pointer; font-family: Verdana, Arial, sans-serif; }
+
+/* EXPORT BAR */
+.export-bar { background: #f5f5f5; border: 1px solid #ddd; padding: 4px 8px; font-size: 11px; color: #555; display: flex; gap: 10px; align-items: center; border-top: none; }
+.export-bar a { color: #00c; }
+
+#footer { background: #003580; color: #aaccff; font-size: 10px; padding: 8px 10px; margin-top: 10px; text-align: center; line-height: 1.8; }
+#footer a { color: #ffcc66; }
+</style>
+</head>
+<body>
+
+<div id="header">
+  <a href="index.html" id="logo">My<span>Sweepstakes</span>Hub.com</a>
+  <div id="tagline">Free Sweepstakes, Contests &amp; Giveaways — Updated Daily</div>
+  <div id="search-box"><input type="text" placeholder="Search sweepstakes..."><input type="submit" value="Go"></div>
+</div>
+<div id="nav">
+  <a href="index.html">Home</a><a href="category.html" class="hi">New Today (89)</a>
+  <a href="category.html">Cash</a><a href="category.html">Cars</a><a href="category.html">Travel</a>
+  <a href="category.html">Gift Cards</a><a href="category.html">Instant Win</a>
+  <a href="ending-soon.html">Ending Soon</a><a href="winners.html">Winners</a>
+  <a href="forum.html">Forum</a><a href="tips.html">Tips</a>
+  <a href="tracker.html" class="active" style="background:#ff9900;color:#000;">My Tracker</a>
+  <a href="login.html">Login / Register</a>
+</div>
+
+<div id="wrap">
+
+  <div class="tracker-head">
+    <div>
+      <h1>My Sweep Tracker</h1>
+      <div class="sub">Track your entries, stay on top of daily sweepstakes, never miss a deadline</div>
+    </div>
+    <div style="font-size:11px;color:#aaccff;">Logged in as: <b style="color:#ffff99;">SweepQueen_Sandra</b> &nbsp;|&nbsp; <a href="login.html" style="color:#ffcc66;">Logout</a></div>
+  </div>
+
+  <!-- TODAY'S REMINDER -->
+  <div class="reminder-box">
+    <h3>⏰ Enter These Today — Tuesday, March 24, 2026</h3>
+    <p>You have <b>4 daily sweepstakes</b> to enter today. Don't miss your streak!</p>
+    <ul class="reminder-list">
+      <li>
+        <span class="freq-badge f-daily">DAILY</span>
+        <a href="detail.html">PCH $500,000 SuperPrize</a>
+        <span class="prize">$500,000</span>
+        <span style="font-size:10px;color:#cc6600;">&#128293; 7-day streak!</span>
+        <a href="#" class="rl-btn" onclick="markEntered('pch')">Enter Now »</a>
+      </li>
+      <li>
+        <span class="freq-badge f-daily">DAILY</span>
+        <a href="detail.html">HGTV Dream Home 2026</a>
+        <span class="prize">$1,200,000</span>
+        <span style="font-size:10px;color:#cc0000;">Ends Mar 31!</span>
+        <a href="#" class="rl-btn" onclick="markEntered('hgtv')">Enter Now »</a>
+      </li>
+      <li>
+        <span class="freq-badge f-daily">DAILY</span>
+        <a href="detail.html">Coca-Cola Summer Sweepstakes</a>
+        <span class="prize">$50,000</span>
+        <span style="font-size:10px;color:#666;">3-day streak</span>
+        <a href="#" class="rl-btn" onclick="markEntered('coke')">Enter Now »</a>
+      </li>
+      <li>
+        <span class="freq-badge f-weekly">WEEKLY</span>
+        <a href="detail.html">Chase Bank $10,000 Sweepstakes</a>
+        <span class="prize">$10,000</span>
+        <span style="font-size:10px;color:#006666;">Due this week</span>
+        <a href="#" class="rl-btn" onclick="markEntered('chase')">Enter Now »</a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-box"><span class="n" id="total-tracked">12</span><span class="l">Tracking</span></div>
+    <div class="stat-box red"><span class="n" id="due-today">4</span><span class="l">Due Today</span></div>
+    <div class="stat-box green"><span class="n" id="entered-today">0</span><span class="l">Entered Today</span></div>
+    <div class="stat-box purple"><span class="n">3</span><span class="l">Ending This Week</span></div>
+    <div class="stat-box"><span class="n" id="total-entries">147</span><span class="l">Total Entries</span></div>
+    <div class="stat-box green"><span class="n">2</span><span class="l">Prizes Won!</span></div>
+  </div>
+
+  <!-- ADD NEW SWEEPSTAKES -->
+  <div class="add-box">
+    <div class="add-box-head" onclick="toggleForm()">
+      ➕ Add a Sweepstakes to Track
+      <a href="#" onclick="event.stopPropagation()">Browse sweepstakes to add »</a>
+    </div>
+    <div class="add-form" id="add-form">
+      <div class="field full">
+        <label>Sweepstakes Name *</label>
+        <input type="text" id="f-name" placeholder="e.g. HGTV Dream Home 2026">
+      </div>
+      <div class="field">
+        <label>Sponsor</label>
+        <input type="text" id="f-sponsor" placeholder="e.g. HGTV">
+      </div>
+      <div class="field">
+        <label>Prize</label>
+        <input type="text" id="f-prize" placeholder="e.g. $1,200,000">
+      </div>
+      <div class="field">
+        <label>Entry URL</label>
+        <input type="url" id="f-url" placeholder="https://...">
+      </div>
+      <div class="field">
+        <label>End Date</label>
+        <input type="date" id="f-end">
+      </div>
+      <div class="field">
+        <label>Entry Frequency</label>
+        <select id="f-freq">
+          <option value="daily">Daily Entry</option>
+          <option value="weekly">Weekly Entry</option>
+          <option value="single">Single Entry (one-time)</option>
+          <option value="instant">Instant Win (daily)</option>
+          <option value="2xdaily">2x Per Day</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Category</label>
+        <select id="f-cat">
+          <option>Cash &amp; Money</option><option>Cars &amp; Trucks</option><option>Travel</option>
+          <option>Gift Cards</option><option>Electronics</option><option>Home &amp; Garden</option>
+          <option>Food &amp; Bev</option><option>Sports</option><option>Entertainment</option>
+          <option>Kids &amp; Family</option><option>Beauty &amp; Health</option><option>Pets</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Notes</label>
+        <input type="text" id="f-notes" placeholder="e.g. Enter at 12am for best odds">
+      </div>
+      <div class="add-form-btns">
+        <button class="btn-add" onclick="addEntry()">Add to Tracker</button>
+        <button class="btn-clear" onclick="clearForm()">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRACKER TABLE TABS -->
+  <div class="tab-row">
+    <a href="#" class="on" onclick="filterTab('all',this)">All Tracking (12)</a>
+    <a href="#" onclick="filterTab('daily',this)">Daily (5)</a>
+    <a href="#" onclick="filterTab('weekly',this)">Weekly (3)</a>
+    <a href="#" onclick="filterTab('single',this)">Single Entry (4)</a>
+    <a href="#" onclick="filterTab('won',this)">Won! (2)</a>
+    <a href="#" onclick="filterTab('ended',this)">Ended (6)</a>
+  </div>
+
+  <!-- MAIN TRACKER TABLE -->
+  <table class="track-table" id="tracker-table">
+    <thead>
+      <tr>
+        <th style="width:22px;"><input type="checkbox" onclick="selectAll(this)"></th>
+        <th>Sweepstakes Name</th>
+        <th style="width:52px;">Freq.</th>
+        <th style="width:72px;">Ends</th>
+        <th style="width:86px;">Last Entered</th>
+        <th style="width:50px;">Entries</th>
+        <th style="width:50px;">Status</th>
+        <th style="width:110px;">Actions</th>
+      </tr>
+    </thead>
+    <tbody id="tracker-body">
+    </tbody>
+  </table>
+
+  <div class="export-bar">
+    <span>Selected: <span id="sel-count">0</span></span>
+    <a href="#" onclick="exportCSV()">Export to CSV</a> |
+    <a href="#" onclick="deleteSelected()">Delete Selected</a> |
+    <a href="#" onclick="markSelectedEntered()">Mark Selected as Entered Today</a>
+  </div>
+
+</div><!-- /wrap -->
+
+<div id="footer">
+  <a href="index.html">Home</a> | <a href="category.html">Sweepstakes</a> | <a href="ending-soon.html">Ending Soon</a> | <a href="winners.html">Winners</a> | <a href="forum.html">Forum</a> | <a href="tips.html">Tips</a> | <a href="tracker.html">My Tracker</a> | <a href="login.html">Login</a><br><br>
+  © 2026 MySweepstakesHub.com — Your tracker data is saved in your browser locally.
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────
+const FREQ_LABELS = { daily:'DAILY', weekly:'WEEKLY', single:'SINGLE', instant:'INSTANT', '2xdaily':'2X/DAY' };
+const FREQ_CLASS  = { daily:'f-daily', weekly:'f-weekly', single:'f-single', instant:'f-instant', '2xdaily':'f-daily' };
+
+function loadDB() {
+  try { return JSON.parse(localStorage.getItem('msh_tracker') || '[]'); }
+  catch(e) { return []; }
+}
+function saveDB(data) { localStorage.setItem('msh_tracker', JSON.stringify(data)); }
+
+function makeId() { return Date.now().toString(36) + Math.random().toString(36).slice(2,5); }
+
+function today() { return new Date().toISOString().slice(0,10); }
+
+// Seed demo data if empty
+function seedDemo() {
+  const db = loadDB();
+  if (db.length) return;
+  const t = today();
+  const demo = [
+    { id:'d1', name:'PCH $500,000 SuperPrize', sponsor:'PCH', prize:'$500,000', url:'https://pch.com', end:'2026-04-30', freq:'daily', cat:'Cash', notes:'Enter morning & evening', entries:37, lastEntered:'2026-03-23', streak:7, status:'active' },
+    { id:'d2', name:'HGTV Dream Home 2026', sponsor:'HGTV', prize:'$1,200,000', url:'https://hgtv.com/sweepstakes', end:'2026-03-31', freq:'2xdaily', cat:'Home', notes:'2x per day! Set 2 alarms', entries:22, lastEntered:'2026-03-23', streak:12, status:'active' },
+    { id:'d3', name:'Coca-Cola Summer Sweepstakes', sponsor:'Coca-Cola', prize:'$50,000', url:'https://coca-cola.com', end:'2026-06-30', freq:'daily', cat:'Cash', notes:'', entries:3, lastEntered:'2026-03-22', streak:3, status:'active' },
+    { id:'d4', name:'Chase Bank $10,000 Sweepstakes', sponsor:'Chase Bank', prize:'$10,000', url:'https://chase.com', end:'2026-04-15', freq:'weekly', cat:'Cash', notes:'Enter Mondays', entries:4, lastEntered:'2026-03-18', streak:0, status:'active' },
+    { id:'d5', name:'Jeep Grand Cherokee Giveaway', sponsor:'Jeep', prize:'$54,000', url:'https://jeep.com', end:'2026-03-28', freq:'single', cat:'Cars', notes:'Already entered!', entries:1, lastEntered:'2026-03-01', streak:0, status:'entered' },
+    { id:'d6', name:'Amazon $25,000 Shopping Spree', sponsor:'Amazon', prize:'$25,000', url:'https://amazon.com', end:'2026-04-15', freq:'daily', cat:'Gift Cards', notes:'', entries:8, lastEntered:'2026-03-22', streak:8, status:'active' },
+    { id:'d7', name:'Disney World Family Vacation', sponsor:'Walt Disney World', prize:'$8,500', url:'https://disneyworld.com', end:'2026-06-15', freq:'daily', cat:'Travel', notes:'', entries:5, lastEntered:'2026-03-21', streak:0, status:'active' },
+    { id:'d8', name:'PayPal $25K Cash Giveaway', sponsor:'PayPal', prize:'$25,000', url:'https://paypal.com', end:'2026-03-29', freq:'single', cat:'Cash', notes:'Ending soon!', entries:1, lastEntered:'2026-03-10', streak:0, status:'entered' },
+    { id:'d9', name:'7-Eleven Slurpee Days Instant Win', sponsor:'7-Eleven', prize:'$7,777', url:'https://7eleven.com', end:'2026-08-31', freq:'instant', cat:'Food', notes:'Play after 8am', entries:18, lastEntered:'2026-03-23', streak:5, status:'active' },
+    { id:'d10', name:'Best Buy Electronics Spree', sponsor:'Best Buy', prize:'$5,000', url:'https://bestbuy.com', end:'2026-04-30', freq:'weekly', cat:'Electronics', notes:'', entries:3, lastEntered:'2026-03-17', streak:0, status:'active' },
+    { id:'d11', name:'Tropicana Beach Escape', sponsor:'Tropicana', prize:'$8,500', url:'https://tropicana.com', end:'2026-03-23', freq:'single', cat:'Travel', notes:'', entries:1, lastEntered:'2026-03-05', streak:0, status:'won', wonAmount:'Trip to Cancun!' },
+    { id:'d12', name:'Walmart $500 Gift Card Win', sponsor:'Walmart', prize:'$500', url:'https://walmart.com', end:'2025-12-31', freq:'daily', cat:'Gift Cards', notes:'WON THIS!', entries:42, lastEntered:'2025-12-01', streak:0, status:'won', wonAmount:'$500 Walmart Gift Card' },
+  ];
+  saveDB(demo);
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────────
+let currentFilter = 'all';
+let selectedIds = new Set();
+
+function renderTable(filter) {
+  currentFilter = filter || currentFilter;
+  const db = loadDB();
+  const t = today();
+  const tbody = document.getElementById('tracker-body');
+
+  let rows = db.filter(e => {
+    if (currentFilter === 'daily')  return e.freq === 'daily' || e.freq === '2xdaily' || e.freq === 'instant';
+    if (currentFilter === 'weekly') return e.freq === 'weekly';
+    if (currentFilter === 'single') return e.freq === 'single';
+    if (currentFilter === 'won')    return e.status === 'won';
+    if (currentFilter === 'ended')  return e.end < t && e.status !== 'won';
+    return e.status !== 'won' && e.end >= t;
+  });
+
+  if (!rows.length) {
+    tbody.innerHTML = '<tr><td colspan="8" style="padding:14px;text-align:center;color:#666;font-style:italic;">No entries here yet. Add a sweepstakes above!</td></tr>';
+    updateStats(db);
+    return;
+  }
+
+  tbody.innerHTML = rows.map(e => {
+    const isToday = e.lastEntered === t;
+    const isDue = needsEntryToday(e) && !isToday;
+    const isOverdue = isDue && e.end >= t;
+    const isEnding = e.end <= addDays(t,7) && e.end >= t;
+    const isExpired = e.end < t;
+    const isWon = e.status === 'won';
+
+    let rowClass = '';
+    if (isDue) rowClass = 'due-today';
+    if (isExpired && !isWon) rowClass = 'overdue';
+
+    let dotClass = 'dot-pending', dotTitle = 'Not entered today';
+    if (isWon)   { dotClass = 'dot-done'; dotTitle = 'WON!'; }
+    else if (isToday) { dotClass = 'dot-done'; dotTitle = 'Entered today'; }
+    else if (isDue)   { dotClass = 'dot-due'; dotTitle = 'Due today'; }
+    else if (isExpired) { dotClass = 'dot-overdue'; dotTitle = 'Expired'; }
+
+    const freqLabel = FREQ_LABELS[e.freq] || e.freq.toUpperCase();
+    const freqClass = FREQ_CLASS[e.freq] || 'f-single';
+    const streak = e.streak > 1 ? `<span class="streak">&#128293;${e.streak}d</span>` : '';
+    const endClass = isEnding && !isExpired ? 'hot' : '';
+    const endDisplay = isExpired ? '<span style="color:#999">Ended</span>' : `<span class="ends-col ${endClass}">${formatDate(e.end)}</span>`;
+    const enteredDisplay = e.lastEntered ? formatDate(e.lastEntered) : '<span style="color:#aaa">Never</span>';
+    const wonBadge = isWon ? `<span style="background:#009900;color:#fff;font-size:9px;padding:1px 4px;border-radius:1px;margin-left:3px;">WON</span>` : '';
+    const enteredBtn = isWon ? '' : (isToday
+      ? `<button class="btn-entered done" disabled>✓ Done</button>`
+      : `<button class="btn-entered" onclick="markEntered('${e.id}')">Entered ✓</button>`);
+
+    return `<tr class="${rowClass}" id="row-${e.id}">
+      <td><input type="checkbox" onchange="toggleSel('${e.id}',this)" ${selectedIds.has(e.id)?'checked':''}></td>
+      <td class="sweeps-name">
+        <a href="${e.url||'detail.html'}" target="_blank">${e.name}</a>${wonBadge}
+        ${e.wonAmount ? `<br><span style="font-size:10px;color:#009900;font-weight:bold;">Prize: ${e.wonAmount}</span>` : ''}
+        ${e.notes ? `<br><span class="notes-text">${e.notes}</span>` : ''}
+        ${streak}
+      </td>
+      <td><span class="freq-badge ${freqClass}">${freqLabel}</span></td>
+      <td>${endDisplay}</td>
+      <td class="last-entered">${enteredDisplay}</td>
+      <td style="text-align:center;font-weight:bold;">${e.entries||0}</td>
+      <td><span class="status-dot ${dotClass}" title="${dotTitle}"></span></td>
+      <td>
+        <div class="action-btns">
+          ${enteredBtn}
+          ${!isWon ? `<button class="btn-skip" onclick="markWon('${e.id}')" title="Mark as won">🏆</button>` : ''}
+          <button class="btn-del" onclick="deleteEntry('${e.id}')" title="Remove">✕</button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+
+  updateStats(db);
+}
+
+function needsEntryToday(e) {
+  if (e.freq === 'daily' || e.freq === '2xdaily' || e.freq === 'instant') return true;
+  if (e.freq === 'weekly') {
+    const last = e.lastEntered ? new Date(e.lastEntered) : null;
+    if (!last) return true;
+    const diff = (new Date() - last) / 86400000;
+    return diff >= 7;
+  }
+  return false;
+}
+
+function addDays(dateStr, n) {
+  const d = new Date(dateStr);
+  d.setDate(d.getDate() + n);
+  return d.toISOString().slice(0,10);
+}
+
+function formatDate(d) {
+  if (!d) return '';
+  const [y,m,day] = d.split('-');
+  const months = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${months[parseInt(m)]} ${parseInt(day)}`;
+}
+
+function updateStats(db) {
+  const t = today();
+  document.getElementById('total-tracked').textContent = db.filter(e=>e.status!=='won'&&e.end>=t).length;
+  document.getElementById('due-today').textContent = db.filter(e=>needsEntryToday(e)&&e.lastEntered!==t&&e.end>=t).length;
+  document.getElementById('entered-today').textContent = db.filter(e=>e.lastEntered===t).length;
+  document.getElementById('total-entries').textContent = db.reduce((s,e)=>s+(e.entries||0),0);
+}
+
+// ── ACTIONS ───────────────────────────────────────────────────────────────
+function markEntered(id) {
+  const db = loadDB();
+  const e = db.find(x=>x.id===id);
+  if (!e) return;
+  e.lastEntered = today();
+  e.entries = (e.entries || 0) + 1;
+  if (e.lastEntered === today()) {
+    e.streak = (e.streak || 0) + 1;
+  } else {
+    e.streak = 1;
+  }
+  saveDB(db);
+  renderTable();
+  showToast('✓ Marked as entered! Keep up that streak!');
+}
+
+function markWon(id) {
+  const prize = prompt('Congratulations! What did you win? (e.g. $500 Walmart Gift Card)');
+  if (prize === null) return;
+  const db = loadDB();
+  const e = db.find(x=>x.id===id);
+  if (!e) return;
+  e.status = 'won';
+  e.wonAmount = prize || 'Prize won!';
+  saveDB(db);
+  renderTable();
+  showToast('🏆 Winner winner! Added to your wins!');
+}
+
+function deleteEntry(id) {
+  if (!confirm('Remove this sweepstakes from your tracker?')) return;
+  const db = loadDB().filter(e=>e.id!==id);
+  saveDB(db);
+  renderTable();
+}
+
+function addEntry() {
+  const name = document.getElementById('f-name').value.trim();
+  const url  = document.getElementById('f-url').value.trim();
+  if (!name) { alert('Please enter a sweepstakes name.'); return; }
+  const db = loadDB();
+  db.push({
+    id: makeId(),
+    name,
+    sponsor: document.getElementById('f-sponsor').value.trim(),
+    prize:   document.getElementById('f-prize').value.trim(),
+    url,
+    end:     document.getElementById('f-end').value || '2099-12-31',
+    freq:    document.getElementById('f-freq').value,
+    cat:     document.getElementById('f-cat').value,
+    notes:   document.getElementById('f-notes').value.trim(),
+    entries: 0,
+    lastEntered: null,
+    streak: 0,
+    status: 'active',
+  });
+  saveDB(db);
+  renderTable();
+  clearForm();
+  showToast('Added to your tracker!');
+}
+
+function clearForm() {
+  ['f-name','f-sponsor','f-prize','f-url','f-end','f-notes'].forEach(id=>{
+    document.getElementById(id).value='';
+  });
+}
+
+function filterTab(filter, el) {
+  event.preventDefault();
+  document.querySelectorAll('.tab-row a').forEach(a=>a.classList.remove('on'));
+  el.classList.add('on');
+  renderTable(filter);
+}
+
+function toggleForm() {
+  const f = document.getElementById('add-form');
+  f.style.display = f.style.display === 'none' ? 'grid' : 'none';
+}
+
+function toggleSel(id, cb) {
+  if (cb.checked) selectedIds.add(id); else selectedIds.delete(id);
+  document.getElementById('sel-count').textContent = selectedIds.size;
+}
+
+function selectAll(cb) {
+  document.querySelectorAll('#tracker-body input[type=checkbox]').forEach(c=>{
+    c.checked = cb.checked;
+    const row = c.closest('tr');
+    const id = row ? row.id.replace('row-','') : null;
+    if (id) { if(cb.checked) selectedIds.add(id); else selectedIds.delete(id); }
+  });
+  document.getElementById('sel-count').textContent = selectedIds.size;
+}
+
+function deleteSelected() {
+  if (!selectedIds.size) return;
+  if (!confirm(`Delete ${selectedIds.size} selected entries?`)) return;
+  const db = loadDB().filter(e=>!selectedIds.has(e.id));
+  saveDB(db);
+  selectedIds.clear();
+  renderTable();
+}
+
+function markSelectedEntered() {
+  if (!selectedIds.size) { alert('Select entries first.'); return; }
+  const db = loadDB();
+  const t = today();
+  selectedIds.forEach(id=>{
+    const e = db.find(x=>x.id===id);
+    if (e) { e.lastEntered=t; e.entries=(e.entries||0)+1; e.streak=(e.streak||0)+1; }
+  });
+  saveDB(db);
+  selectedIds.clear();
+  renderTable();
+  showToast(`✓ Marked ${selectedIds.size||'selected'} entries as entered!`);
+}
+
+function exportCSV() {
+  const db = loadDB();
+  const header = 'Name,Sponsor,Prize,Frequency,End Date,Entries,Last Entered,Status\n';
+  const rows = db.map(e=>`"${e.name}","${e.sponsor||''}","${e.prize||''}","${e.freq}","${e.end}","${e.entries||0}","${e.lastEntered||''}","${e.status}"`).join('\n');
+  const blob = new Blob([header+rows], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'my_sweepstakes.csv';
+  a.click();
+}
+
+let toastTimer;
+function showToast(msg) {
+  let t = document.getElementById('toast-msg');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast-msg';
+    t.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#003580;color:#fff;padding:8px 14px;font-size:12px;font-family:Verdana,Arial,sans-serif;border:1px solid #ff9900;z-index:999;';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.display = 'block';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.style.display='none', 3000);
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+seedDemo();
+renderTable();
+</script>
+</body>
+</html>
