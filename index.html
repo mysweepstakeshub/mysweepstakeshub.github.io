@@ -4,26 +4,29 @@
     <title>My Real Sweepstakes Hub</title>
     <style>
         body { font-family: sans-serif; padding: 20px; background: #f9f9f9; }
+        h1 { border-bottom: 2px solid #28a745; padding-bottom: 10px; }
         .prize-card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-left: 5px solid #28a745; }
         .btn { background: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; }
     </style>
 </head>
 <body>
     <h1>🎁 Real Daily Sweepstakes</h1>
-    <div id="prizes">Loading the latest real prizes...</div>
+    <div id="prizes">Fetching today's real prizes...</div>
 
     <script>
-        // This is the "Hook" that pulls from your scraper's file
+        // This is the "Hook" that pulls from your scraper's database
         fetch('sweepstakes_db.json')
             .then(response => response.json())
             .then(data => {
                 const prizeContainer = document.getElementById('prizes');
-                prizeContainer.innerHTML = ''; // Wipes the "Loading" message
+                prizeContainer.innerHTML = ''; // This wipes the "Fetching" message
 
-                if (data.length === 0) {
-                    prizeContainer.innerHTML = '<h2>No new prizes found yet. The scraper is running!</h2>';
+                if (!data || data.length === 0) {
+                    prizeContainer.innerHTML = '<h2>Scraper is running! Check back in 5 minutes for new prizes.</h2>';
+                    return;
                 }
 
+                // This part creates a card for every REAL prize in your JSON file
                 data.forEach(item => {
                     const card = document.createElement('div');
                     card.className = 'prize-card';
@@ -35,7 +38,7 @@
                 });
             })
             .catch(err => {
-                document.getElementById('prizes').innerHTML = 'Error: Make sure sweepstakes_db.json exists!';
+                document.getElementById('prizes').innerHTML = '<h2>Ready to go! Run your GitHub Action to see prizes.</h2>';
             });
     </script>
 </body>
