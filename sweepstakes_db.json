@@ -260,5 +260,12 @@
         "description": "An entry created automatically by GitHub Actions!",
         "date_added": "2026-03-30",
         "status": "approved"
+    },
+    {
+        "title": "PCH $5,000.00 A Week for Life",
+        "url": "https://www.pch.com/sweepstakes",
+        "source": "Publishers Clearing House",
+        "date_added": "2026-03-30",
+        "status": "approved"
     }
 ]
