@@ -30,15 +30,30 @@ a:hover { color:#cc0000; text-decoration:underline; }
 #navlinks a:last-child { border-right:none; }
 #navlinks a:hover { color:#cc0000; text-decoration:underline; }
 #navlinks a.hi { color:#cc0000; font-weight:bold; }
-name: Daily Sweeps Update
-on:
-  schedule:
-    - cron: '0 13 * * *' # Runs every day at 1 PM UTC (8 AM EST)
-  workflow_dispatch:      # Lets you click a button to run it manually
+  <div id="sweeps-list" style="max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif;">
+  <p>Loading the latest legit sweepstakes...</p>
+</div>
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+<script>
+  fetch('sweeps.json')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('sweeps-list');
+      if (!data || data.length === 0) {
+        container.innerHTML = "Check back soon for new sweeps!";
+        return;
+      }
+      container.innerHTML = data.map(item => `
+        <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 8px; background: #fff;">
+          <h3 style="margin-top: 0; color: #c00000;">${item.title}</h3>
+          <a href="${item.url}" target="_blank" style="background: #28a745; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">Enter Giveaway</a>
+        </div>
+      `).join('');
+    })
+    .catch(err => {
+      document.getElementById('sweeps-list').innerHTML = "Updating prize list... check back in a moment!";
+    });
+</script>   
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -337,4 +352,4 @@ document.getElementById('dateDisplay').textContent = days[d.getDay()] + ', ' + m
 </script>
 
 </body>
-</html>t
+</html>
