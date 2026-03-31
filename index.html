@@ -3,164 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MySweepstakesHub - Your #1 Source for Free Sweepstakes & Contests</title>
+    <title>MySweepstakesHub - The Web's Ultimate Directory</title>
     <style>
-        /* CLASSIC DIRECTORY STYLING */
-        body { font-family: Arial, sans-serif; font-size: 13px; margin: 0; padding: 0; background-color: #fff; color: #333; }
-        header { padding: 20px; text-align: center; border-bottom: 3px solid #000080; }
-        .logo { font-family: 'Times New Roman', serif; font-size: 38px; color: #336699; font-style: italic; font-weight: bold; text-decoration: none; }
-        .tagline { font-size: 11px; color: #666; margin-top: 5px; }
-
-        /* NAVIGATION BAR */
-        nav { background-color: #f2f2f2; border-top: 1px solid #000080; border-bottom: 1px solid #000080; padding: 8px; text-align: center; }
-        nav a { color: #0000cd; text-decoration: none; font-weight: bold; padding: 0 15px; font-size: 12px; text-transform: uppercase; }
-        nav a:hover { text-decoration: underline; color: #ff0000; }
-
-        /* MAIN LAYOUT */
-        #main-wrapper { width: 1000px; margin: 20px auto; display: flex; gap: 25px; }
-        
-        /* LEFT COLUMN (The Content) */
-        #left-content { width: 700px; }
-        .section-header { background-color: #000080; color: white; padding: 8px 12px; font-size: 16px; font-weight: bold; margin-bottom: 15px; display: flex; justify-content: space-between; }
-        .section-header a { color: #fff; font-size: 11px; text-decoration: none; font-weight: normal; }
-
-        /* PRIZE LISTINGS */
-        .sweep-entry { padding: 12px; border-bottom: 1px dotted #ccc; transition: background 0.2s; }
-        .sweep-entry:hover { background-color: #f9f9f9; }
-        .sweep-title { font-size: 16px; color: #0000cd; font-weight: bold; text-decoration: none; display: block; margin-bottom: 4px; }
-        .sweep-title:hover { text-decoration: underline; }
-        .sweep-meta { font-size: 11px; color: #666; }
-        .cat-tag { color: #006400; font-weight: bold; text-transform: capitalize; }
-
-        /* RIGHT COLUMN (The Sidebar) */
-        #sidebar { width: 275px; }
-        .sidebar-box { border: 1px solid #000080; margin-bottom: 20px; }
-        .sidebar-head { background-color: #000080; color: white; padding: 6px 10px; font-weight: bold; font-size: 14px; }
-        .sidebar-content { padding: 10px; }
-        
-        .cat-list { list-style: none; padding: 0; margin: 0; }
-        .cat-list li { padding: 5px 0; border-bottom: 1px solid #eee; }
-        .cat-list a { color: #0000cd; text-decoration: none; font-size: 13px; }
-        .cat-list a:hover { color: #ff0000; }
-
-        /* MONEY MAKING SPOTS (ADS) */
-        .ad-placeholder { background: #fdfdfd; border: 1px dashed #bbb; color: #999; text-align: center; padding: 20px; margin-bottom: 20px; font-style: italic; }
-
-        /* SEARCH BAR */
-        .search-container { text-align: right; margin-bottom: 10px; }
-        .search-container input { padding: 4px; width: 180px; border: 1px solid #ccc; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f7f6; color: #333; }
+        header { background: #000080; color: white; padding: 40px 20px; text-align: center; }
+        #container { max-width: 900px; margin: -30px auto 50px; padding: 0 20px; }
+        .site-card { 
+            background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px;
+            display: flex; gap: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 6px solid #28a745; position: relative;
+        }
+        .rating-badge { position: absolute; top: 15px; right: 20px; background: #ffc107; padding: 5px 12px; border-radius: 20px; font-weight: bold; }
+        .info-sec { flex: 1; }
+        .site-title { font-size: 22px; font-weight: bold; color: #000080; margin-bottom: 10px; }
+        .pros-list { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; }
+        .pro-tag { background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: bold; }
+        .btn-visit { background: #28a745; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; }
     </style>
 </head>
 <body>
 
 <header>
-    <a href="index.html" class="logo">MySweepstakesHub.com</a>
-    <div class="tagline">Your #1 Source for FREE Sweepstakes, Contests & Giveaways — Updated Daily!</div>
+    <h1>MySweepstakesHub.com</h1>
+    <p>Top-Rated Giveaway & Contest Sites for 2026</p>
 </header>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="category.html?type=new">New Today</a>
-    <a href="category.html?type=daily">Daily Entry</a>
-    <a href="category.html?type=cash">Cash & Cards</a>
-    <a href="category.html?type=instant">Instant Win</a>
-</nav>
-
-<div id="main-wrapper">
-    
-    <div id="left-content">
-        <div class="search-container">
-            <input type="text" placeholder="Search prizes...">
-            <button>Search</button>
-        </div>
-
-        <div class="ad-placeholder">-- Advertisement: Sponsored Giveaway --</div>
-
-        <div class="section-header">
-            Newest Sweepstakes 
-            <a href="category.html?type=new">more »</a>
-        </div>
-
-        <div id="sweeps-injection-point">
-            <p style="padding: 20px; text-align: center;">Loading the latest prizes...</p>
-        </div>
-    </div>
-
-    <div id="sidebar">
-        
-        <div class="sidebar-box">
-            <div class="sidebar-head">Free Email Alert</div>
-            <div class="sidebar-content">
-                <p style="margin-top:0; font-size: 11px;">Get new sweeps in your inbox every morning!</p>
-                <input type="text" placeholder="Email Address" style="width: 85%; padding: 5px; margin-bottom: 5px;">
-                <button style="width: 90%; padding: 5px; cursor: pointer;">Subscribe Free</button>
-            </div>
-        </div>
-
-        <div class="sidebar-box">
-            <div class="sidebar-head">Browse by Prize</div>
-            <div class="sidebar-content">
-                <ul class="cat-list">
-                    <li><a href="category.html?type=cash">Cash & Gift Cards</a></li>
-                    <li><a href="category.html?type=cars">Cars & Trucks</a></li>
-                    <li><a href="category.html?type=travel">Travel & Vacations</a></li>
-                    <li><a href="category.html?type=electronics">Electronics</a></li>
-                    <li><a href="category.html?type=home">For the Home</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="ad-placeholder" style="height: 250px; display: flex; align-items: center; justify-content: center;">
-            Google AdSense Box
-        </div>
-
-    </div>
+<div id="container">
+    <div id="directory-list">Loading the best sites...</div>
 </div>
 
 <script>
-    // This script connects your database (JSON) to your homepage
-    fetch('sweepstakes_db.json')
-        .then(response => response.json())
+    fetch('sites_db.json')
+        .then(res => res.json())
         .then(data => {
-            const container = document.getElementById('sweeps-injection-point');
-            container.innerHTML = ''; // Clear the loading message
-
-            // Take the 20 most recent entries
-            const latest = data.slice(0, 20);
-
-            latest.forEach(item => {
-                const entry = document.createElement('div');
-                entry.className = 'sweep-entry';
-                entry.innerHTML = `
-                    <a href="${item.url}" class="sweep-title" target="_blank">${item.title}</a>
-                    <div class="sweep-meta">
-                        Added: <strong>${item.date_added}</strong> | 
-                        Category: <span class="cat-tag">${item.category}</span> | 
-                        Source: ${item.source}
+            const list = document.getElementById('directory-list');
+            list.innerHTML = data.map(site => `
+                <div class="site-card">
+                    <div class="rating-badge">${site.rating} ★</div>
+                    <div class="info-sec">
+                        <div class="site-title">${site.name}</div>
+                        <p>${site.description}</p>
+                        <div class="pros-list">
+                            ${site.pros.map(pro => `<span class="pro-tag">✓ ${pro}</span>`).join('')}
+                        </div>
+                        <a href="${site.url}" target="_blank" class="btn-visit">Visit Official Site »</a>
                     </div>
-                `;
-                container.appendChild(entry);
-            });
-        })
-        .catch(err => {
-            console.error("Database error:", err);
-            document.getElementById('sweeps-injection-point').innerHTML = "Check back soon for new sweepstakes!";
+                </div>
+            `).join('');
         });
 </script>
-
-<footer style="text-align: center; padding: 40px; color: #999; font-size: 11px; border-top: 1px solid #eee; margin-top: 50px;">
-    &copy; 2026 MySweepstakesHub.com - No purchase necessary. Always read official rules.
-</footer>
-
 </body>
 </html>
-Why this is your "Final Version":
-Direct Integration: It specifically asks for sweepstakes_db.json.
-
-Category Ready: Every link (like ?type=cars) is already set up to talk to your category.html file.
-
-Revenue Ready: I left specific ad-placeholder boxes. When you get your Google AdSense code, you just delete my text and paste their code in those spots.
-
-The "20 Count": It only pulls the top 20 items. This makes the page load fast and encourages users to click your category links (where they will see more ads!).
-
-Paste this into your index.html on GitHub and commit. Then refresh your site—it should look 100% complete now!
