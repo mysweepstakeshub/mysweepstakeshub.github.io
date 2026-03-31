@@ -4,26 +4,54 @@
         "url": "https://www.sweepsadvantage.com",
         "category": "Mega Directory",
         "rating": "5.0",
-        "description": "The largest and most active sweepstakes community. Features a massive forum and thousands of vetted listings.",
-        "pros": ["Huge volume", "Active community", "Local sweeps"],
+        "description": "The gold standard. Features a massive searchable database and an active community forum for tracking wins.",
+        "pros": ["Huge volume", "Active forum", "Local sweeps"],
         "payout_type": "Direct Prizes"
     },
     {
-        "name": "PCH (Publishers Clearing House)",
-        "url": "https://www.pch.com",
-        "category": "Big Money",
-        "rating": "4.9",
-        "description": "The gold standard for life-changing prizes. Famous for their multimillion-dollar 'Forever' prize draws.",
-        "pros": ["Massive jackpots", "100% Free", "Trusted legacy"],
-        "payout_type": "Large Jackpots"
+        "name": "The Freebie Guy",
+        "url": "https://thefreebieguy.com/current-sweepstakes-and-giveaways/",
+        "category": "Daily Freebies",
+        "rating": "5.0",
+        "description": "The fastest updates on the web. If a brand drops a new giveaway, you'll find it here first.",
+        "pros": ["Real-time updates", "Mobile friendly", "Fast entry"],
+        "payout_type": "Prizes & Freebies"
     },
     {
         "name": "Contest Girl",
         "url": "https://www.contestgirl.com",
         "category": "Daily Entry",
-        "rating": "4.8",
-        "description": "Clean, simple, and incredibly organized. Perfect for 'hobbyists' who want to track their entries daily.",
-        "pros": ["No ads", "Easy tracking", "Global listings"],
+        "rating": "4.9",
+        "description": "Loved for its clean, ad-free organization. Best for users who like to stay organized with daily entries.",
+        "pros": ["No clutter", "Global listings", "Very reliable"],
         "payout_type": "Direct Prizes"
+    },
+    {
+        "name": "Infinite Sweeps",
+        "url": "https://www.infinitesweeps.com/",
+        "category": "Searchable Hub",
+        "rating": "4.8",
+        "description": "An endless list of sweepstakes categorized by prize type. Great for finding specific items like 'Cash' or 'Cars'.",
+        "pros": ["Great filters", "Simple layout", "High volume"],
+        "payout_type": "Direct Prizes"
+    },
+    {
+        "name": "Sweepstakes Today",
+        "url": "https://www.sweepstakestoday.com/",
+        "category": "Vetted Sweeps",
+        "rating": "4.7",
+        "description": "Every link is manually checked for safety and legitimacy. A trusted source for family-friendly contests.",
+        "pros": ["Safe links", "Daily newsletter", "Established brand"],
+        "payout_type": "Verified Prizes"
+    },
+    {
+        "name": "FreebieShark",
+        "url": "https://www.freebieshark.com/",
+        "category": "Instant Win",
+        "rating": "4.7",
+        "description": "The specialist in 'Instant Win' games. Perfect for those who want to know if they won immediately.",
+        "pros": ["Instant win focus", "Daily free samples", "Fun UI"],
+        "payout_type": "Instant Wins"
     }
 ]
+    
