@@ -1,9 +1,65 @@
 [
     {
-        "title": "Win a New Backyard Grill",
-        "url": "https://example.com/grill",
-        "source": "Contest Girl",
-        "date_added": "2026-03-30",
-        "status": "approved"
+        "title": "Clothing & Jewelry",
+        "url": "https://infinitesweeps.com/sweepstakes/clothing-and-jewelry/",
+        "category": "general",
+        "source": "InfiniteSweeps",
+        "date_added": "2026-03-31"
+    },
+    {
+        "title": "Home Furnishings",
+        "url": "https://infinitesweeps.com/sweepstakes/home-furnishings/",
+        "category": "general",
+        "source": "InfiniteSweeps",
+        "date_added": "2026-03-31"
+    },
+    {
+        "title": "Home Improvement",
+        "url": "https://infinitesweeps.com/sweepstakes/home-improvement/",
+        "category": "general",
+        "source": "InfiniteSweeps",
+        "date_added": "2026-03-31"
+    },
+    {
+        "title": "Sports Equipment",
+        "url": "https://infinitesweeps.com/sweepstakes/sports-equipment/",
+        "category": "general",
+        "source": "InfiniteSweeps",
+        "date_added": "2026-03-31"
+    },
+    {
+        "title": "Sweepstakes Forum",
+        "url": "https://infinitesweeps.com/forum/",
+        "category": "general",
+        "source": "InfiniteSweeps",
+        "date_added": "2026-03-31"
+    },
+    {
+        "title": "Search Sweepstakes",
+        "url": "https://infinitesweeps.com/search/",
+        "category": "general",
+        "source": "InfiniteSweeps",
+        "date_added": "2026-03-31"
+    },
+    {
+        "title": "Member Preferences",
+        "url": "https://infinitesweeps.com/preferences/",
+        "category": "general",
+        "source": "InfiniteSweeps",
+        "date_added": "2026-03-31"
+    },
+    {
+        "title": "Frequent Questions",
+        "url": "https://infinitesweeps.com/faq.php",
+        "category": "general",
+        "source": "InfiniteSweeps",
+        "date_added": "2026-03-31"
+    },
+    {
+        "title": "Do Not Sell My Information",
+        "url": "https://infinitesweeps.com/CCPA.php",
+        "category": "general",
+        "source": "InfiniteSweeps",
+        "date_added": "2026-03-31"
     }
 ]
