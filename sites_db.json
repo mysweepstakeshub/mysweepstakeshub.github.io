@@ -1,57 +1,23 @@
 [
-    {
-        "name": "Sweepstakes Advantage",
-        "url": "https://www.sweepsadvantage.com",
-        "category": "Mega Directory",
-        "rating": "5.0",
-        "description": "The gold standard. Features a massive searchable database and an active community forum for tracking wins.",
-        "pros": ["Huge volume", "Active forum", "Local sweeps"],
-        "payout_type": "Direct Prizes"
-    },
-    {
-        "name": "The Freebie Guy",
-        "url": "https://thefreebieguy.com/current-sweepstakes-and-giveaways/",
-        "category": "Daily Freebies",
-        "rating": "5.0",
-        "description": "The fastest updates on the web. If a brand drops a new giveaway, you'll find it here first.",
-        "pros": ["Real-time updates", "Mobile friendly", "Fast entry"],
-        "payout_type": "Prizes & Freebies"
-    },
-    {
-        "name": "Contest Girl",
-        "url": "https://www.contestgirl.com",
-        "category": "Daily Entry",
-        "rating": "4.9",
-        "description": "Loved for its clean, ad-free organization. Best for users who like to stay organized with daily entries.",
-        "pros": ["No clutter", "Global listings", "Very reliable"],
-        "payout_type": "Direct Prizes"
-    },
-    {
-        "name": "Infinite Sweeps",
-        "url": "https://www.infinitesweeps.com/",
-        "category": "Searchable Hub",
-        "rating": "4.8",
-        "description": "An endless list of sweepstakes categorized by prize type. Great for finding specific items like 'Cash' or 'Cars'.",
-        "pros": ["Great filters", "Simple layout", "High volume"],
-        "payout_type": "Direct Prizes"
-    },
-    {
-        "name": "Sweepstakes Today",
-        "url": "https://www.sweepstakestoday.com/",
-        "category": "Vetted Sweeps",
-        "rating": "4.7",
-        "description": "Every link is manually checked for safety and legitimacy. A trusted source for family-friendly contests.",
-        "pros": ["Safe links", "Daily newsletter", "Established brand"],
-        "payout_type": "Verified Prizes"
-    },
-    {
-        "name": "FreebieShark",
-        "url": "https://www.freebieshark.com/",
-        "category": "Instant Win",
-        "rating": "4.7",
-        "description": "The specialist in 'Instant Win' games. Perfect for those who want to know if they won immediately.",
-        "pros": ["Instant win focus", "Daily free samples", "Fun UI"],
-        "payout_type": "Instant Wins"
-    }
+    { "name": "Sweepstakes Advantage", "url": "https://www.sweepsadvantage.com", "category": "Mega Directory", "rating": "5.0", "description": "The industry leader with a massive searchable database and active community.", "pros": ["Forum", "Volume"], "payout_type": "Various" },
+    { "name": "The Freebie Guy", "url": "https://thefreebieguy.com/current-sweepstakes-and-giveaways/", "category": "Daily Updates", "rating": "5.0", "description": "Famous for lighting-fast alerts on new brand giveaways and samples.", "pros": ["Fast", "Mobile"], "payout_type": "Prizes" },
+    { "name": "Sweeties Sweeps", "url": "https://sweetiessweeps.com/", "category": "Educational", "rating": "4.9", "description": "Expert advice on how to win plus a highly curated list of local and national sweeps.", "pros": ["Tips", "Vetted"], "payout_type": "Prizes" },
+    { "name": "Win Prizes Online", "url": "https://www.winprizesonline.com/", "category": "Directory", "rating": "4.9", "description": "A deep directory featuring a wide variety of prize categories and entry types.", "pros": ["Variety", "Updated"], "payout_type": "Prizes" },
+    { "name": "Online Sweepstakes", "url": "https://online-sweepstakes.com/", "category": "Community", "rating": "4.8", "description": "One of the oldest and most respected sweepstakes communities on the web.", "pros": ["Legacy", "Forum"], "payout_type": "Various" },
+    { "name": "iWinContests", "url": "https://iwincontests.com/", "category": "Fast Entry", "rating": "4.8", "description": "Clean, straightforward list focusing on high-quality giveaways with easy entry.", "pros": ["Clean UI", "Daily"], "payout_type": "Prizes" },
+    { "name": "Giveaway Frenzy", "url": "https://giveawayfrenzy.com/", "category": "Aggregator", "rating": "4.8", "description": "Specializes in finding and promoting the newest giveaways from across the web.", "pros": ["Aggregator", "New"], "payout_type": "Prizes" },
+    { "name": "I Love Giveaways", "url": "https://ilovegiveaways.com/", "category": "Daily List", "rating": "4.7", "description": "Consistently updated with the latest sweepstakes, contests, and free samples.", "pros": ["Samples", "Daily"], "payout_type": "Prizes" },
+    { "name": "Sweepstakes Lovers", "url": "https://www.sweepstakeslovers.com/", "category": "Curated", "rating": "4.7", "description": "Provides detailed information and rules for the most popular national sweepstakes.", "pros": ["Details", "Safe"], "payout_type": "Prizes" },
+    { "name": "Contest Bee", "url": "https://www.contestbee.com/", "category": "Directory", "rating": "4.7", "description": "A well-organized directory that makes it easy to find and enter current contests.", "pros": ["Easy", "Safe"], "payout_type": "Various" },
+    { "name": "Just Free Stuff", "url": "https://justfreestuff.com/", "category": "Freebies", "rating": "4.7", "description": "Focuses on free samples and giveaways for everyday household items.", "pros": ["Samples", "Daily"], "payout_type": "Freebies" },
+    { "name": "Contest Listing", "url": "https://www.contestlisting.com/", "category": "Global", "rating": "4.6", "description": "Features a large database of contests available to residents in various countries.", "pros": ["Global", "Volume"], "payout_type": "Prizes" },
+    { "name": "Giveaway Machine", "url": "https://giveawaymachine.com/", "category": "New Tech", "rating": "4.6", "description": "Modern directory focusing on electronics, gaming, and tech-related giveaways.", "pros": ["Tech", "Modern"], "payout_type": "Tech" },
+    { "name": "GiveawayBase", "url": "https://giveawaybase.com/", "category": "International", "rating": "4.6", "description": "Great for finding international giveaways and gleam-based contests.", "pros": ["Global", "Gleam"], "payout_type": "Prizes" },
+    { "name": "SweepstakesBible", "url": "https://www.sweepstakesbible.com/", "category": "Directory", "rating": "4.9", "description": "Organized list of free-to-enter US and Canada sweeps.", "pros": ["Vetted", "Simple"], "payout_type": "Prizes" },
+    { "name": "UltraContest", "url": "https://www.ultracontest.com/", "category": "Premium", "rating": "4.8", "description": "Simple experience for finding high-value prizes without excessive ads.", "pros": ["No Ads", "Simple"], "payout_type": "High Value" },
+    { "name": "PrizeGrab", "url": "https://prizegrab.com/", "category": "Daily Sweeps", "rating": "4.8", "description": "User-friendly platform with guaranteed daily cash and tech prizes.", "pros": ["Daily Win", "Easy"], "payout_type": "Cash/Tech" },
+    { "name": "Contest Girl", "url": "https://www.contestgirl.com", "category": "Daily Tracker", "rating": "4.8", "description": "Loved for clean organization and manual entry tracking tools.", "pros": ["Tracker", "Clean"], "payout_type": "Prizes" },
+    { "name": "Sweepstakes Today", "url": "https://www.sweepstakestoday.com/", "category": "Trusted", "rating": "4.7", "description": "A safety-first directory that manually checks every giveaway link.", "pros": ["Secure", "Legacy"], "payout_type": "Verified" },
+    { "name": "FreebieShark", "url": "https://www.freebieshark.com/", "category": "Instant Win", "rating": "4.7", "description": "The best place to find instant-win games and free daily samples.", "pros": ["Instant", "Fun"], "payout_type": "Instant Win" },
+    { "name": "Infinite Sweeps", "url": "https://www.infinitesweeps.com/", "category": "Searchable", "rating": "4.6", "description": "A massive list categorized by prize type and entry requirements.", "pros": ["Search", "Volume"], "payout_type": "Prizes" }
 ]
-    
