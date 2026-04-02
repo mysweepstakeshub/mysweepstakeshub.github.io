@@ -3,75 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="mylead-verification" content="d6267f017583584f547372e85af43d52">
-    <title>MySweepstakesHub - The Ultimate Directory</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>My Sweepstakes Hub | Best Daily Giveaways</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; margin: 0; background: #f0f2f5; color: #333; }
-        header { background: #000080; color: white; padding: 20px 10px; text-align: center; border-bottom: 4px solid #ffc107; }
-        .hero-title { font-family: 'Pacifico', cursive; font-size: 32px; color: #ffc107; margin: 0; }
-        .hero-sub { font-size: 13px; opacity: 0.9; margin-top: 2px; }
-
-        #container { max-width: 850px; margin: 15px auto; padding: 0 10px; }
-        
-        .site-card { 
-            background: white; border-radius: 6px; padding: 10px 15px; margin-bottom: 8px;
-            display: flex; align-items: center; justify-content: space-between;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-left: 4px solid #28a745;
-        }
-
-        .info-sec { flex: 1; min-width: 0; } /* min-width:0 prevents text overflow */
-        .site-title { font-size: 16px; font-weight: 600; color: #000080; margin-bottom: 2px; }
-        .site-desc { font-size: 12.5px; color: #555; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        
-        .tag-row { display: flex; gap: 5px; }
-        .pro-tag { background: #e8f5e9; color: #2e7d32; padding: 1px 6px; border-radius: 3px; font-size: 9px; font-weight: bold; text-transform: uppercase; }
-
-        .action-sec { margin-left: 15px; display: flex; flex-direction: column; align-items: flex-end; }
-        .btn-visit { background: #28a745; color: white; padding: 6px 14px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 12px; white-space: nowrap; }
-        .btn-visit:hover { background: #218838; }
-        .rating-text { font-size: 10px; color: #999; margin-top: 3px; }
-
-        @media (max-width: 600px) {
-            .site-card { padding: 12px; }
-            .site-desc { white-space: normal; overflow: visible; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-        }
+        .featured-card { border: 2px solid #fbbf24; background: #fffcf0; }
+        .badge-featured { background: #fbbf24; color: #92400e; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 font-sans">
 
-<header>
-    <div class="hero-title">MySweepstakesHub.com</div>
-    <div class="hero-sub">20+ Verified Sweepstakes Sources | Updated Daily</div>
-</header>
+    <header class="bg-blue-600 text-white py-8 text-center shadow-lg">
+        <h1 class="text-4xl font-bold italic">MySweepstakesHub.com</h1>
+        <p class="mt-2 text-blue-100 uppercase tracking-widest text-sm font-semibold">Verified Daily Giveaways & Rewards</p>
+    </header>
 
-<div id="container">
-    <div id="directory-list">
-        </div>
-</div>
-
-<script>
-    fetch('sites_db.json')
-        .then(res => res.json())
-        .then(data => {
-            const list = document.getElementById('directory-list');
-            list.innerHTML = data.map(site => `
-                <div class="site-card">
-                    <div class="info-sec">
-                        <div class="site-title">${site.name}</div>
-                        <div class="site-desc">${site.description}</div>
-                        <div class="tag-row">
-                            ${site.pros.map(pro => `<span class="pro-tag">${pro}</span>`).join('')}
-                        </div>
-                    </div>
-                    <div class="action-sec">
-                        <a href="${site.url}" target="_blank" class="btn-visit">GO »</a>
-                        <span class="rating-text">${site.rating}★</span>
-                    </div>
+    <main class="max-w-6xl mx-auto px-4 py-10">
+        
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <i class="fas fa-fire text-orange-500 mr-2"></i> Today's Top 5 Expert Picks
+            </h2>
+            <div id="featured-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 </div>
-            `).join('');
-        });
-</script>
+        </div>
+
+        <hr class="border-gray-200 mb-12">
+
+        <div>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Full Giveaway Directory</h2>
+            <div id="directory-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                </div>
+        </div>
+    </main>
+
+    <script>
+        async function loadSites() {
+            try {
+                const response = await fetch('sites_db.json');
+                const sites = await response.json();
+                
+                const featuredContainer = document.getElementById('featured-container');
+                const directoryContainer = document.getElementById('directory-container');
+
+                sites.forEach(site => {
+                    const card = `
+                        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 ${site.featured ? 'featured-card' : 'border border-gray-100'}">
+                            <div class="p-6">
+                                ${site.featured ? '<span class="badge-featured px-2 py-1 rounded text-xs font-bold uppercase mb-2 inline-block">Editor\'s Choice</span>' : ''}
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">${site.name}</h3>
+                                <p class="text-gray-600 text-sm mb-4 leading-relaxed">${site.description}</p>
+                                
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    ${site.pros.map(pro => `<span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs font-medium"><i class="fas fa-check mr-1"></i>${pro}</span>`).join('')}
+                                </div>
+
+                                <a href="${site.url}" target="_blank" 
+                                   class="block w-full text-center py-3 rounded-lg font-bold transition-colors ${site.featured ? 'bg-orange-500 hover:bg-orange-600 text-white' : 'bg-blue-600 hover:bg-blue-700 text-white'}">
+                                    ENTER TO WIN <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+
+                    if (site.featured) {
+                        featuredContainer.innerHTML += card;
+                    } else {
+                        directoryContainer.innerHTML += card;
+                    }
+                });
+            } catch (error) {
+                console.error("Error loading sites:", error);
+            }
+        }
+        loadSites();
+    </script>
+
+    <footer class="bg-gray-800 text-gray-400 py-10 text-center mt-20">
+        <p class="text-sm">© 2026 MySweepstakesHub.com - All Rights Reserved</p>
+        <p class="text-xs mt-2 px-6 italic">Disclaimer: We are a directory of third-party sweepstakes. We do not run these giveaways directly. Always read the official rules on the provider's website.</p>
+    </footer>
 
 </body>
 </html>
