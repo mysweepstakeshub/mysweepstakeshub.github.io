@@ -10,7 +10,7 @@
     <style>
         .logo-font { font-family: 'Pacifico', cursive; }
         .featured-item { border-left: 4px solid #fbbf24; background: #fffdf5; }
-        .directory-card { border: 1px solid #e5e7eb; transition: transform 0.2s; }
+        .directory-card { border: 1px solid #e5e7eb; transition: 0.2s; }
         .directory-card:hover { transform: translateY(-2px); border-color: #3b82f6; }
     </style>
 </head>
@@ -39,33 +39,25 @@
         async function loadSites() {
             const fContainer = document.getElementById('featured-container');
             const dContainer = document.getElementById('directory-container');
-
             try {
                 const response = await fetch('sites_db.json');
                 const sites = await response.json();
-                
                 sites.forEach(site => {
-                    // This is the fixed logic:
-                    if (site.featured) {
-                        fContainer.innerHTML += `
-                            <div class="featured-item p-4 rounded-r-lg shadow-sm flex justify-between items-center">
-                                <div><h3 class="font-bold text-slate-800">${site.name}</h3></div>
-                                <a href="${site.url}" target="_blank" class="bg-slate-800 text-white px-6 py-2 rounded text-xs font-bold hover:bg-slate-700">ENTER NOW</a>
-                            </div>`;
-                    } else {
-                        dContainer.innerHTML += `
-                            <div class="directory-card bg-white p-5 rounded-lg shadow-sm flex flex-col justify-between">
-                                <div>
-                                    <h3 class="font-bold text-slate-900 mb-2">${site.name}</h3>
-                                    <p class="text-xs text-slate-500 mb-4">${site.description}</p>
-                                </div>
-                                <a href="${site.url}" target="_blank" class="text-center py-2 border border-slate-200 rounded text-xs font-bold text-slate-700 hover:bg-slate-50">VIEW SITE</a>
-                            </div>`;
-                    }
+                    const cardHtml = site.featured ? 
+                        `<div class="featured-item p-4 rounded-r-lg shadow-sm flex justify-between items-center">
+                            <h3 class="font-bold text-slate-800">${site.name}</h3>
+                            <a href="${site.url}" target="_blank" class="bg-slate-800 text-white px-6 py-2 rounded text-xs font-bold uppercase">Enter Now</a>
+                        </div>` :
+                        `<div class="directory-card bg-white p-5 rounded-lg shadow-sm flex flex-col justify-between">
+                            <h3 class="font-bold text-slate-900 mb-2">${site.name}</h3>
+                            <p class="text-xs text-slate-500 mb-4">${site.description}</p>
+                            <a href="${site.url}" target="_blank" class="text-center py-2 border border-slate-200 rounded text-xs font-bold text-slate-700">VIEW SITE</a>
+                        </div>`;
+                    
+                    if (site.featured) { fContainer.innerHTML += cardHtml; } 
+                    else { dContainer.innerHTML += cardHtml; }
                 });
-            } catch (e) {
-                console.error("Error loading JSON:", e);
-            }
+            } catch (e) { console.error(e); }
         }
         loadSites();
     </script>
