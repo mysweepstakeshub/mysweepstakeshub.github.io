@@ -1,164 +1,63 @@
-Here is the complete, final code for your index.html.
-
-I have combined your classic professional layout with the automated logic that reads from your sweepstakes_db.json. I also added the specific links for Cash, Cars, Travel, and Electronics so they actually work with your category.html file.
-
-HTML
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MySweepstakesHub - Your #1 Source for Free Sweepstakes & Contests</title>
-    <style>
-        /* CLASSIC DIRECTORY STYLING */
-        body { font-family: Arial, sans-serif; font-size: 13px; margin: 0; padding: 0; background-color: #fff; color: #333; }
-        header { padding: 20px; text-align: center; border-bottom: 3px solid #000080; }
-        .logo { font-family: 'Times New Roman', serif; font-size: 38px; color: #336699; font-style: italic; font-weight: bold; text-decoration: none; }
-        .tagline { font-size: 11px; color: #666; margin-top: 5px; }
-
-        /* NAVIGATION BAR */
-        nav { background-color: #f2f2f2; border-top: 1px solid #000080; border-bottom: 1px solid #000080; padding: 8px; text-align: center; }
-        nav a { color: #0000cd; text-decoration: none; font-weight: bold; padding: 0 15px; font-size: 12px; text-transform: uppercase; }
-        nav a:hover { text-decoration: underline; color: #ff0000; }
-
-        /* MAIN LAYOUT */
-        #main-wrapper { width: 1000px; margin: 20px auto; display: flex; gap: 25px; }
-        
-        /* LEFT COLUMN (The Content) */
-        #left-content { width: 700px; }
-        .section-header { background-color: #000080; color: white; padding: 8px 12px; font-size: 16px; font-weight: bold; margin-bottom: 15px; display: flex; justify-content: space-between; }
-        .section-header a { color: #fff; font-size: 11px; text-decoration: none; font-weight: normal; }
-
-        /* PRIZE LISTINGS */
-        .sweep-entry { padding: 12px; border-bottom: 1px dotted #ccc; transition: background 0.2s; }
-        .sweep-entry:hover { background-color: #f9f9f9; }
-        .sweep-title { font-size: 16px; color: #0000cd; font-weight: bold; text-decoration: none; display: block; margin-bottom: 4px; }
-        .sweep-title:hover { text-decoration: underline; }
-        .sweep-meta { font-size: 11px; color: #666; }
-        .cat-tag { color: #006400; font-weight: bold; text-transform: capitalize; }
-
-        /* RIGHT COLUMN (The Sidebar) */
-        #sidebar { width: 275px; }
-        .sidebar-box { border: 1px solid #000080; margin-bottom: 20px; }
-        .sidebar-head { background-color: #000080; color: white; padding: 6px 10px; font-weight: bold; font-size: 14px; }
-        .sidebar-content { padding: 10px; }
-        
-        .cat-list { list-style: none; padding: 0; margin: 0; }
-        .cat-list li { padding: 5px 0; border-bottom: 1px solid #eee; }
-        .cat-list a { color: #0000cd; text-decoration: none; font-size: 13px; }
-        .cat-list a:hover { color: #ff0000; }
-
-        /* MONEY MAKING SPOTS (ADS) */
-        .ad-placeholder { background: #fdfdfd; border: 1px dashed #bbb; color: #999; text-align: center; padding: 20px; margin-bottom: 20px; font-style: italic; }
-
-        /* SEARCH BAR */
-        .search-container { text-align: right; margin-bottom: 10px; }
-        .search-container input { padding: 4px; width: 180px; border: 1px solid #ccc; }
-    </style>
+    <title>Categories - My Sweepstakes Hub</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<header>
-    <a href="index.html" class="logo">MySweepstakesHub.com</a>
-    <div class="tagline">Your #1 Source for FREE Sweepstakes, Contests & Giveaways — Updated Daily!</div>
-</header>
-
-<nav>
-    <a href="index.html">Home</a>
-    <a href="category.html?type=new">New Today</a>
-    <a href="category.html?type=daily">Daily Entry</a>
-    <a href="category.html?type=cash">Cash & Cards</a>
-    <a href="category.html?type=instant">Instant Win</a>
-</nav>
-
-<div id="main-wrapper">
-    
-    <div id="left-content">
-        <div class="search-container">
-            <input type="text" placeholder="Search prizes...">
-            <button>Search</button>
+    <div class="top-utility">
+        <a href="index.html">Home</a> &nbsp;|&nbsp;
+        <a href="#">Login</a> &nbsp;|&nbsp;
+        <a href="#">Register</a> &nbsp;|&nbsp;
+        <a href="forum.html">Forum</a> &nbsp;|&nbsp;
+        <a href="admin.html">Admin</a>
+    </div>
+    <div class="main-container">
+        <div class="logo-area">
+            <div class="logo-text">MY SWEEPSTAKES HUB</div>
+            <div class="tagline">~ Your #1 Source for Free Online Sweepstakes ~</div>
         </div>
-
-        <div class="ad-placeholder">-- Advertisement: Sponsored Giveaway --</div>
-
-        <div class="section-header">
-            Newest Sweepstakes 
-            <a href="category.html?type=new">more »</a>
+        <div class="nav-bar">
+            <a href="index.html">Home</a> <span class="nav-separator">|</span>
+            <a href="new.html">New Sweepstakes</a> <span class="nav-separator">|</span>
+            <a href="ending-soon.html">Ending Soon</a> <span class="nav-separator">|</span>
+            <a href="expired.html">Recently Expired</a> <span class="nav-separator">|</span>
+            <a href="category.html">Categories</a> <span class="nav-separator">|</span>
+            <a href="winners.html">Winners</a> <span class="nav-separator">|</span>
+            <a href="submit.html">Submit a Sweep</a> <span class="nav-separator">|</span>
+            <a href="forum.html">Forum</a>
         </div>
-
-        <div id="sweeps-injection-point">
-            <p style="padding: 20px; text-align: center;">Loading the latest prizes...</p>
+        <div class="breadcrumb"><a href="index.html">Home</a> &gt; <strong>Categories</strong></div>
+        <div class="simple-page">
+            <h1>Browse Sweepstakes by Category</h1>
+            <p>Select a category below to view all active sweepstakes.</p>
+            <table class="content-table">
+                <tr><th width="70%">Category</th><th width="30%">Active Sweeps</th></tr>
+                <tr><td><a href="#">💰 Cash</a></td><td>112</td></tr>
+                <tr class="row-alt"><td><a href="#">🎁 Gift Certificates</a></td><td>822</td></tr>
+                <tr><td><a href="#">📱 Electronics</a></td><td>103</td></tr>
+                <tr class="row-alt"><td><a href="#">✈️ Travel</a></td><td>201</td></tr>
+                <tr><td><a href="#">🏠 For the Home</a></td><td>467</td></tr>
+                <tr class="row-alt"><td><a href="#">👗 Clothing &amp; Jewelry</a></td><td>514</td></tr>
+                <tr><td><a href="#">🍔 Food &amp; Drink</a></td><td>389</td></tr>
+                <tr class="row-alt"><td><a href="#">👶 Kid Stuff</a></td><td>680</td></tr>
+                <tr><td><a href="#">💻 Computers</a></td><td>79</td></tr>
+                <tr class="row-alt"><td><a href="#">📚 Books &amp; Magazines</a></td><td>1,194</td></tr>
+                <tr><td><a href="#">🎬 CDs &amp; Videos</a></td><td>513</td></tr>
+                <tr class="row-alt"><td><a href="#">💄 Health &amp; Beauty</a></td><td>415</td></tr>
+                <tr><td><a href="#">🚗 Automotive</a></td><td>35</td></tr>
+                <tr class="row-alt"><td><a href="#">🎵 Audio &amp; Video</a></td><td>50</td></tr>
+                <tr><td><a href="#">🎒 Memorabilia &amp; Collectibles</a></td><td>123</td></tr>
+            </table>
+        </div>
+        <div class="footer">
+            <b>My Sweepstakes Hub</b><br>
+            <a href="index.html">Home</a> | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a> | <a href="contact.html">Contact</a><br><br>
+            &copy; 2026 My Sweepstakes Hub. All rights reserved.
         </div>
     </div>
-
-    <div id="sidebar">
-        
-        <div class="sidebar-box">
-            <div class="sidebar-head">Free Email Alert</div>
-            <div class="sidebar-content">
-                <p style="margin-top:0; font-size: 11px;">Get new sweeps in your inbox every morning!</p>
-                <input type="text" placeholder="Email Address" style="width: 85%; padding: 5px; margin-bottom: 5px;">
-                <button style="width: 90%; padding: 5px; cursor: pointer;">Subscribe Free</button>
-            </div>
-        </div>
-
-        <div class="sidebar-box">
-            <div class="sidebar-head">Browse by Prize</div>
-            <div class="sidebar-content">
-                <ul class="cat-list">
-                    <li><a href="category.html?type=cash">Cash & Gift Cards</a></li>
-                    <li><a href="category.html?type=cars">Cars & Trucks</a></li>
-                    <li><a href="category.html?type=travel">Travel & Vacations</a></li>
-                    <li><a href="category.html?type=electronics">Electronics</a></li>
-                    <li><a href="category.html?type=home">For the Home</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="ad-placeholder" style="height: 250px; display: flex; align-items: center; justify-content: center;">
-            Google AdSense Box
-        </div>
-
-    </div>
-</div>
-
-<script>
-    // This script connects your database (JSON) to your homepage
-    fetch('sweepstakes_db.json')
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById('sweeps-injection-point');
-            container.innerHTML = ''; // Clear the loading message
-
-            // Take the 20 most recent entries
-            const latest = data.slice(0, 20);
-
-            latest.forEach(item => {
-                const entry = document.createElement('div');
-                entry.className = 'sweep-entry';
-                entry.innerHTML = `
-                    <a href="${item.url}" class="sweep-title" target="_blank">${item.title}</a>
-                    <div class="sweep-meta">
-                        Added: <strong>${item.date_added}</strong> | 
-                        Category: <span class="cat-tag">${item.category}</span> | 
-                        Source: ${item.source}
-                    </div>
-                `;
-                container.appendChild(entry);
-            });
-        })
-        .catch(err => {
-            console.error("Database error:", err);
-            document.getElementById('sweeps-injection-point').innerHTML = "Check back soon for new sweepstakes!";
-        });
-</script>
-
-<footer style="text-align: center; padding: 40px; color: #999; font-size: 11px; border-top: 1px solid #eee; margin-top: 50px;">
-    &copy; 2026 MySweepstakesHub.com - No purchase necessary. Always read official rules.
-</footer>
-
 </body>
 </html>
-
-
-  
