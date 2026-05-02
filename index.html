@@ -1,4 +1,4 @@
-
+html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,8 +40,8 @@
 
         <!-- Info Bar -->
         <div class="info-bar">
-            <b>7,703 Current Sweepstakes</b> — <b>2,469 Premium Sweeps</b> — 
-            Updated Daily! &nbsp; | &nbsp; 
+            <b id="sweeps-count">Loading...</b> Current Sweepstakes — 
+            Updated Live! &nbsp; | &nbsp; 
             <a href="new.html">Display All Sweepstakes</a>
         </div>
 
@@ -55,39 +55,30 @@
                     <div class="section-box">
                         <div class="section-header">New Sweepstakes</div>
                         <div class="section-body">
-                            <a href="new.html" class="date-link">Friday, May 27, 2011 <span class="count">(1)</span></a>
-                            <a href="new.html" class="date-link">Thursday, May 26, 2011 <span class="count">(279)</span></a>
-                            <a href="new.html" class="date-link">Wednesday, May 25, 2011 <span class="count">(190)</span></a>
-                            <a href="new.html" class="date-link">Tuesday, May 24, 2011 <span class="count">(280)</span></a>
-                            <a href="new.html" class="date-link">Monday, May 23, 2011 <span class="count">(233)</span></a>
-                            <a href="new.html" class="date-link">Sunday, May 22, 2011 <span class="count">(208)</span></a>
-                            <a href="new.html" class="date-link">Saturday, May 21, 2011 <span class="count">(177)</span></a>
-                            <div class="total-row">1,368 sweeps this week</div>
+                            <a href="new.html" class="date-link">Today's New Sweeps <span class="count" id="today-count">—</span></a>
+                            <a href="new.html" class="date-link">This Week <span class="count" id="week-count">—</span></a>
+                            <a href="new.html" class="date-link">This Month <span class="count" id="month-count">—</span></a>
+                            <div class="total-row"><span id="total-sweeps">—</span> total sweeps</div>
                         </div>
                     </div>
 
                     <div class="section-box">
                         <div class="section-header">Ending Soon</div>
                         <div class="section-body">
-                            <a href="ending-soon.html" class="date-link">Friday, May 27, 2011 <span class="count">(228)</span></a>
-                            <a href="ending-soon.html" class="date-link">Saturday, May 28, 2011 <span class="count">(137)</span></a>
-                            <a href="ending-soon.html" class="date-link">Sunday, May 29, 2011 <span class="count">(191)</span></a>
-                            <a href="ending-soon.html" class="date-link">Monday, May 30, 2011 <span class="count">(377)</span></a>
-                            <a href="ending-soon.html" class="date-link">Tuesday, May 31, 2011 <span class="count">(573)</span></a>
-                            <a href="ending-soon.html" class="date-link">Wednesday, June 1, 2011 <span class="count">(198)</span></a>
-                            <a href="ending-soon.html" class="date-link">Thursday, June 2, 2011 <span class="count">(157)</span></a>
-                            <div class="total-row">1,861 sweeps</div>
+                            <a href="ending-soon.html" class="date-link">Ending Today <span class="count" id="end-today">—</span></a>
+                            <a href="ending-soon.html" class="date-link">Ending This Week <span class="count" id="end-week">—</span></a>
+                            <a href="ending-soon.html" class="date-link">Ending This Month <span class="count" id="end-month">—</span></a>
+                            <div class="total-row">Don't miss out!</div>
                         </div>
                     </div>
 
                     <div class="section-box">
                         <div class="section-header">Recently Expired</div>
                         <div class="section-body">
-                            <a href="expired.html" class="date-link">Thursday, May 26, 2011 <span class="count">(203)</span></a>
-                            <a href="expired.html" class="date-link">Wednesday, May 25, 2011 <span class="count">(271)</span></a>
-                            <a href="expired.html" class="date-link">Tuesday, May 24, 2011 <span class="count">(224)</span></a>
-                            <a href="expired.html" class="date-link">Monday, May 23, 2011 <span class="count">(251)</span></a>
-                            <div class="total-row">949 expired this week</div>
+                            <a href="expired.html" class="date-link">Yesterday <span class="count">(203)</span></a>
+                            <a href="expired.html" class="date-link">Past 3 Days <span class="count">(498)</span></a>
+                            <a href="expired.html" class="date-link">Past Week <span class="count">(1,294)</span></a>
+                            <div class="total-row">Check back — many relist!</div>
                         </div>
                     </div>
 
@@ -101,70 +92,24 @@
                         <span style="font-size: 11px;">$4.95/month — Cancel anytime — <a href="#">Learn More</a></span>
                     </div>
 
-                    <table class="content-table">
-                        <tr>
-                            <th width="45%">Sweepstakes</th>
-                            <th width="15%">Category</th>
-                            <th width="12%">Ends</th>
-                            <th width="13%">Frequency</th>
-                            <th width="15%">Added</th>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Win a $10,000 Home Makeover</a> <span class="new-badge">NEW</span></td>
-                            <td><a href="category.html">For the Home</a></td>
-                            <td>06/15/11</td>
-                            <td>Daily</td>
-                            <td>05/27/11</td>
-                        </tr>
-                        <tr class="row-alt">
-                            <td><a href="#">$5,000 Cash Giveaway — Enter Now</a> <span class="hot-badge">HOT</span></td>
-                            <td><a href="category.html">Cash</a></td>
-                            <td>06/30/11</td>
-                            <td>Single</td>
-                            <td>05/26/11</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Trip for 2 to Hawaii Sweepstakes</a></td>
-                            <td><a href="category.html">Travel</a></td>
-                            <td>06/01/11</td>
-                            <td>Daily</td>
-                            <td>05/26/11</td>
-                        </tr>
-                        <tr class="row-alt">
-                            <td><a href="#">Win an iPad 2 + $100 iTunes Gift Card</a> <span class="new-badge">NEW</span></td>
-                            <td><a href="category.html">Electronics</a></td>
-                            <td>07/15/11</td>
-                            <td>Single</td>
-                            <td>05/27/11</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">$1,000 Amazon Gift Card Giveaway</a></td>
-                            <td><a href="category.html">Gift Certificates</a></td>
-                            <td>06/10/11</td>
-                            <td>Daily</td>
-                            <td>05/25/11</td>
-                        </tr>
-                        <tr class="row-alt">
-                            <td><a href="#">New Car Giveaway — 2011 Honda Civic</a></td>
-                            <td><a href="category.html">Automotive</a></td>
-                            <td>08/01/11</td>
-                            <td>Single</td>
-                            <td>05/24/11</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Designer Handbag Collection ($2,500 Value)</a></td>
-                            <td><a href="category.html">Clothing &amp; Jewelry</a></td>
-                            <td>06/22/11</td>
-                            <td>Monthly</td>
-                            <td>05/23/11</td>
-                        </tr>
-                        <tr class="row-alt">
-                            <td><a href="#">Kids' Ultimate Birthday Party Package</a></td>
-                            <td><a href="category.html">Kid Stuff</a></td>
-                            <td>06/05/11</td>
-                            <td>Single</td>
-                            <td>05/22/11</td>
-                        </tr>
+                    <table class="content-table" id="rss-feed-table">
+                        <thead>
+                            <tr>
+                                <th width="45%">Sweepstakes</th>
+                                <th width="15%">Category</th>
+                                <th width="12%">Ends</th>
+                                <th width="13%">Frequency</th>
+                                <th width="15%">Added</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5" style="text-align: center; padding: 30px;">
+                                    <strong>Loading sweepstakes...</strong><br>
+                                    <small>Fetching the latest from across the web</small>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
 
                     <div class="pagination">
@@ -175,7 +120,6 @@
                         <a href="#">4</a> &nbsp;
                         <a href="#">5</a> &nbsp;
                         ... &nbsp;
-                        <a href="#">120</a> &nbsp;
                         <a href="#">Next ►</a>
                     </div>
 
@@ -186,36 +130,32 @@
 
                     <div class="section-box">
                         <div class="section-header">Entry Frequency</div>
-                        <div class="section-body">
-                            <div>Single Entries: <b>3,663</b></div>
-                            <div>Daily Entries: <b>612</b></div>
-                            <div>24-Hour Entries: <b>4</b></div>
-                            <div>Unlimited Entries: <b>179</b></div>
-                            <div>Weekly Entries: <b>7</b></div>
-                            <div>Monthly Entries: <b>497</b></div>
-                            <div>Other Entries: <b>17</b></div>
-                            <div>Unknown Entries: <b>159</b></div>
+                        <div class="section-body" id="frequency-stats">
+                            <div>Single Entries: <b>—</b></div>
+                            <div>Daily Entries: <b>—</b></div>
+                            <div>24-Hour Entries: <b>—</b></div>
+                            <div>Unlimited Entries: <b>—</b></div>
+                            <div>Weekly Entries: <b>—</b></div>
+                            <div>Monthly Entries: <b>—</b></div>
+                            <div>Other: <b>—</b></div>
+                            <div>Unknown: <b>—</b></div>
                         </div>
                     </div>
 
                     <div class="section-box">
                         <div class="section-header">Prize Categories</div>
                         <div class="section-body">
-                            <table class="cat-grid">
-                                <tr><td><a href="category.html">Audio &amp; Video</a></td><td class="count">(50)</td></tr>
-                                <tr><td><a href="category.html">Automotive</a></td><td class="count">(35)</td></tr>
-                                <tr><td><a href="category.html">Books &amp; Magazines</a></td><td class="count">(1,194)</td></tr>
-                                <tr><td><a href="category.html">Cash</a></td><td class="count">(112)</td></tr>
-                                <tr><td><a href="category.html">CDs &amp; Videos</a></td><td class="count">(513)</td></tr>
-                                <tr><td><a href="category.html">Clothing &amp; Jewelry</a></td><td class="count">(514)</td></tr>
-                                <tr><td><a href="category.html">Computers</a></td><td class="count">(79)</td></tr>
-                                <tr><td><a href="category.html">Electronics</a></td><td class="count">(103)</td></tr>
-                                <tr><td><a href="category.html">Food &amp; Drink</a></td><td class="count">(389)</td></tr>
-                                <tr><td><a href="category.html">For the Home</a></td><td class="count">(467)</td></tr>
-                                <tr><td><a href="category.html">Gift Certificates</a></td><td class="count">(822)</td></tr>
-                                <tr><td><a href="category.html">Health &amp; Beauty</a></td><td class="count">(415)</td></tr>
-                                <tr><td><a href="category.html">Kid Stuff</a></td><td class="count">(680)</td></tr>
-                                <tr><td><a href="category.html">Travel</a></td><td class="count">(201)</td></tr>
+                            <table class="cat-grid" id="category-stats">
+                                <tr><td><a href="category.html">Cash</a></td><td class="count">(—)</td></tr>
+                                <tr><td><a href="category.html">Gift Cards</a></td><td class="count">(—)</td></tr>
+                                <tr><td><a href="category.html">Electronics</a></td><td class="count">(—)</td></tr>
+                                <tr><td><a href="category.html">Travel</a></td><td class="count">(—)</td></tr>
+                                <tr><td><a href="category.html">Home &amp; Garden</a></td><td class="count">(—)</td></tr>
+                                <tr><td><a href="category.html">Fashion</a></td><td class="count">(—)</td></tr>
+                                <tr><td><a href="category.html">Food &amp; Drink</a></td><td class="count">(—)</td></tr>
+                                <tr><td><a href="category.html">Kids &amp; Family</a></td><td class="count">(—)</td></tr>
+                                <tr><td><a href="category.html">Automotive</a></td><td class="count">(—)</td></tr>
+                                <tr><td><a href="category.html">Books &amp; Media</a></td><td class="count">(—)</td></tr>
                             </table>
                         </div>
                     </div>
@@ -228,6 +168,7 @@
                             <a href="forum.html">► Community Forum</a>
                             <a href="new.html">► Today's New Sweeps</a>
                             <a href="ending-soon.html">► Ending This Week</a>
+                            <a href="#" id="refresh-feed">► Refresh Listings</a>
                         </div>
                     </div>
 
@@ -255,6 +196,9 @@
         </div>
 
     </div>
+
+    <!-- RSS Feed Aggregator Script -->
+    <script src="js/rss-feed.js"></script>
 
 </body>
 </html>
